@@ -34,7 +34,7 @@ Projeyi çalıştırmak için sisteminizde aşağıdaki yazılımların kurulu o
 
 2. **Veritabanını yapılandırın:**
 
-   - `dress_rental_db` adında bir veritabanı oluşturun (Docker ile çalıştırılacaksa bu adım gerekmez).
+   - `dressrental` adında bir veritabanı oluşturun (Docker ile çalıştırılacaksa bu adım gerekmez).
    - `src/main/resources` klasöründeki `application.properties` dosyasını veritabanı bilgilerinize göre güncelleyin.
 
 3. **Projeyi Maven ile derleyin:**
