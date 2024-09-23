@@ -1,5 +1,6 @@
 package com.example.dressrentalapp.service;
 
+import com.example.dressrentalapp.exception.ValidationException;
 import com.example.dressrentalapp.model.User;
 import com.example.dressrentalapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,16 +14,22 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final CartService cartService;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, CartService cartService) {
         this.userRepository = userRepository;
+        this.cartService = cartService;
     }
 
     // Yeni kullanıcı ekleme
     public User addUser(User user) {
-        userRepository.save(user);
-        return user;
+        if (userRepository.existsByEmail(user.getEmail())){
+            throw new ValidationException("Bu email ile kayıtlı kullanıcı bulunmaktadır.");
+        }
+        User savedUser = userRepository.save(user);
+        cartService.saveEmptyCart(savedUser);
+        return savedUser;
     }
 
     // Tüm kullanıcıları listeleme

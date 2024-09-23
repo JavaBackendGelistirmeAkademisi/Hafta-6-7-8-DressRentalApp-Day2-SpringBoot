@@ -1,11 +1,16 @@
 package com.example.dressrentalapp.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "dress")
+@Getter
+@Setter
 public class Dress {
 
 
@@ -23,10 +28,11 @@ public class Dress {
     @NotNull(message = "Price cannot be null")
     private double price; // Kiralama ücreti
 
+    @Getter
+    @Setter
     private boolean available = true; // Kiralama durumu
 
     // Getter ve Setter metodları
-    // ...
 
     public @NotNull(message = "Dress name cannot be null") @Size(min = 2, max = 50, message = "Dress name must be between 2 and 50 characters") String getName() {
         return name;
@@ -36,13 +42,6 @@ public class Dress {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public @NotNull(message = "Size cannot be null") String getSize() {
         return size;
@@ -61,11 +60,4 @@ public class Dress {
         this.price = price;
     }
 
-    public boolean isAvailable() {
-        return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
 }
