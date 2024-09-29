@@ -26,4 +26,8 @@ public class User {
     @Email(message = "Email should be valid")
     private String email; // Kullanıcı e-postası
 
+    private String password;
+
+    private String role;
+
 }

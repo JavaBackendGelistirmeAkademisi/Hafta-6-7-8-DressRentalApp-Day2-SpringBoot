@@ -20,4 +20,10 @@ public class UserRequestDTO {
     @Email(message = "Email should be valid")
     private String email;
 
+    @NotNull(message = "Password cannot be null")
+    private String password;
+
+    @NotNull(message = "Role cannot be null")
+    private String role;
+
 }

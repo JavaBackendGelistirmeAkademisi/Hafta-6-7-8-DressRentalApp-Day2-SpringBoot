@@ -4,6 +4,7 @@ import com.example.dressrentalapp.model.User;
 import com.example.dressrentalapp.model.request.UserRequestDTO;
 import com.example.dressrentalapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,16 +20,6 @@ public class UserController {
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
-    }
-
-    // Yeni kullanıcı ekleme işlemi
-    @PostMapping("/add")
-    public User addUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
-        // DTO'dan User modeline dönüştürme
-        User user = new User();
-        user.setName(userRequestDTO.getName());
-        user.setEmail(userRequestDTO.getEmail());
-        return userService.addUser(user);
     }
 
     // Tüm kullanıcıları listeleme işlemi
